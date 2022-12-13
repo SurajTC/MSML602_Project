@@ -1,10 +1,11 @@
 import Head from "next/head";
 import { WeatherCard } from "components/WeatherCard";
 import Time from "components/Time";
+import { Box } from "@mui/material";
 
 export default function Home() {
   return (
-    <div>
+    <Box my={4}>
       <Head>
         <title>Weather App</title>
         <meta
@@ -13,26 +14,13 @@ export default function Home() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
+      <Box component="main">
         <Time />
         <WeatherCard />
-      </main>
-
-      <footer>
+      </Box>
+      <Box component="footer">
         <p>This is footer</p>
-      </footer>
-    </div>
+      </Box>
+    </Box>
   );
 }
-
-// export async function getStaticProps() {
-//   console.log("hello");
-//   // const posts = await getPosts()
-//   return { props: {} };
-// }
-
-// function Posts(props) {
-//   const { data } = useQuery('posts', getPosts, { initialData: props.posts })
-
-//   // ...
-// }

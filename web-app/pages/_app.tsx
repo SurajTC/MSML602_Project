@@ -68,6 +68,15 @@ export default function App({ Component, pageProps }: AppProps) {
         <Container maxWidth="xl">
           <Component {...pageProps} />
         </Container>
+        <AppBar
+          position="fixed"
+          color="primary"
+          sx={{ top: "auto", bottom: 0 }}
+        >
+          <Container maxWidth="xl">
+            <Typography>2022</Typography>
+          </Container>
+        </AppBar>
       </QueryClientProvider>
     </ThemeProvider>
   );
