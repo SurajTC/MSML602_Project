@@ -2,11 +2,11 @@ import React from "react";
 import Card from "@mui/material/Card";
 import Typography from "@mui/material/Typography";
 import CardContent from "@mui/material/CardContent";
-import { GetForecastData } from "hooks/OpenWeather";
+import { UseForecastData } from "hooks/OpenWeather";
 import { Box } from "@mui/material";
 
 export const WeatherCard = () => {
-  const { isLoading, data } = GetForecastData();
+  const { isLoading, data } = UseForecastData();
 
   if (isLoading) {
     return (

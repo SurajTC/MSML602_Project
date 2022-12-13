@@ -30,8 +30,8 @@ export default function App({ Component, pageProps }: AppProps) {
     <ThemeProvider theme={theme}>
       <QueryClientProvider client={queryClient}>
         <CssBaseline />
-        <Container maxWidth="xl">
-          <AppBar position="sticky">
+        <AppBar position="sticky">
+          <Container maxWidth="xl">
             <Box
               p={1.5}
               display="flex"
@@ -63,7 +63,9 @@ export default function App({ Component, pageProps }: AppProps) {
                 )}
               </IconButton>
             </Box>
-          </AppBar>
+          </Container>
+        </AppBar>
+        <Container maxWidth="xl">
           <Component {...pageProps} />
         </Container>
       </QueryClientProvider>

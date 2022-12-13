@@ -1,6 +1,5 @@
 import { useQuery } from "react-query";
 import axios from "axios";
-import { type } from "os";
 
 interface Props {
   api_key?: string;
@@ -65,13 +64,13 @@ const fetchForecast = async () => {
   const params = {
     lat: 40.7143,
     lon: -74.006,
-    appid: "f71306a23cdb0d9bcb31071589186677",
+    appid: process.env.OpenWeatherAPI,
   };
   const response = await axios.get<Forecast>(url, { params });
   return response.data;
 };
 
-export const GetForecastData = () => {
+export const UseForecastData = () => {
   return useQuery("weather", fetchForecast);
 };
 

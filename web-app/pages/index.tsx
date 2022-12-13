@@ -1,7 +1,5 @@
 import Head from "next/head";
-import Image from "next/image";
 import { WeatherCard } from "components/WeatherCard";
-import { GetForecastData } from "hooks/OpenWeather";
 import Time from "components/Time";
 
 export default function Home() {
@@ -28,8 +26,9 @@ export default function Home() {
 }
 
 // export async function getStaticProps() {
-//   const posts = await getPosts()
-//   return { props: { posts } }
+//   console.log("hello");
+//   // const posts = await getPosts()
+//   return { props: {} };
 // }
 
 // function Posts(props) {
