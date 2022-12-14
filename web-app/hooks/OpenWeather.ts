@@ -1,62 +1,16 @@
 import { useQuery } from "react-query";
 import axios from "axios";
+import { CurrentWeather, Forecast, params } from "./type";
 
-interface Props {
-  api_key?: string;
-}
+const fetchWeather = async () => {
+  const url = "https://api.openweathermap.org/data/2.5/weather";
 
-type description = {
-  id: string;
-  main: string;
-  description: string;
-  icon: string;
+  const response = await axios.get<CurrentWeather>(url, { params });
+  return response.data;
 };
 
-type Weather = {
-  dt: number | string;
-  main: {
-    temp: number;
-    feels_like: number;
-    temp_min: number;
-    temp_max: number;
-    pressure: number;
-    sea_level: number;
-    grnd_level: number;
-    humidity: number;
-    temp_kf: number;
-  };
-  weather: description[];
-  clouds: any;
-  wind: {
-    speed: number;
-    deg: number;
-    gust: number;
-  };
-  visibility: string;
-  pop: string;
-  dt_txt: string;
-};
-
-type City = {
-  coord: {
-    lon: number;
-    lat: number;
-  };
-  country: string;
-  id: string;
-  name: string;
-  population: number;
-  sunrise: number;
-  sunset: number;
-  timezone: string;
-};
-
-type Forecast = {
-  cod: string;
-  city: City;
-  message: string;
-  cnt: number;
-  list: Weather[];
+export const UseWeatherData = () => {
+  return useQuery("weather", fetchWeather);
 };
 
 const fetchForecast = async () => {
@@ -71,13 +25,5 @@ const fetchForecast = async () => {
 };
 
 export const UseForecastData = () => {
-  return useQuery("weather", fetchForecast);
+  return useQuery("forecast", fetchForecast);
 };
-
-export async function getStaticProps() {
-  return {
-    props: {
-      api_key: process.env.OPENWEATHER_API_KEY,
-    },
-  };
-}

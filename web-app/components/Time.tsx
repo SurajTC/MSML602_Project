@@ -23,6 +23,8 @@ export const Time = () => {
         })}
       </Typography>
       <Typography variant="h4">New York, US</Typography>
+      <br />
+      <br />
     </Box>
   );
 };

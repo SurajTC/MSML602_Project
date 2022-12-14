@@ -25,6 +25,7 @@ ChartJS.register(
 
 interface Props {
   openWeather?: number[];
+  prediction?: number[];
 }
 
 export const options = {
@@ -67,7 +68,7 @@ const labels = [
   "11PM",
 ];
 
-export const LineChart = ({ openWeather }: Props) => {
+export const LineChart = ({ openWeather, prediction }: Props) => {
   const data = {
     labels,
     datasets: [
@@ -79,13 +80,14 @@ export const LineChart = ({ openWeather }: Props) => {
       },
       {
         label: "Predicted",
-        data: openWeather
-          ? openWeather.map((i) =>
-              Math.random() > 0.5
-                ? i * 0.999 + Math.random() / 1000
-                : i * 1.001 + Math.random() / 1000
-            )
-          : [],
+        // data: openWeather
+        //   ? openWeather.map((i) =>
+        //       Math.random() > 0.5
+        //         ? i * 0.999 + Math.random() / 1000
+        //         : i * 1.001 + Math.random() / 1000
+        //     )
+        //   : [],
+        data: prediction,
         borderColor: "rgb(53, 162, 235)",
         backgroundColor: "rgba(53, 162, 235, 0.5)",
       },

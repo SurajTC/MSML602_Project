@@ -19,7 +19,6 @@ export default function Home() {
         <WeatherCard />
       </Box>
       <Box component="footer">
-        <p>This is footer</p>
       </Box>
     </Box>
   );

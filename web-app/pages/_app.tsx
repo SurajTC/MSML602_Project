@@ -74,7 +74,7 @@ export default function App({ Component, pageProps }: AppProps) {
           sx={{ top: "auto", bottom: 0 }}
         >
           <Container maxWidth="xl">
-            <Typography>2022</Typography>
+            <Typography>Term Project - Priciples of Data Science | FALL 2022</Typography>
           </Container>
         </AppBar>
       </QueryClientProvider>
