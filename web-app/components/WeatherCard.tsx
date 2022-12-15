@@ -69,7 +69,9 @@ export const WeatherCard = () => {
           <Card>
             {current && (
               <CardContent>
-                <Typography variant="h4">{current.main.temp}°C</Typography>
+                <Typography variant="h4">
+                  {toCelcius(current.main.temp)}°C
+                </Typography>
                 <Typography variant="h3" textTransform="capitalize">
                   {current.weather[0].main}
                 </Typography>
@@ -106,15 +108,15 @@ export const WeatherCard = () => {
                 >
                   <Typography variant="h6">Feels Like</Typography>{" "}
                   <Typography variant="h6">
-                    {current.main.feels_like}°C
+                    {toCelcius(current.main.feels_like)}°C
                   </Typography>
                   <Typography variant="h6">Min</Typography>{" "}
                   <Typography variant="h6">
-                    {current.main.temp_min}°C
+                    {toCelcius(current.main.temp_min)}°C
                   </Typography>
                   <Typography variant="h6">Max</Typography>{" "}
                   <Typography variant="h6">
-                    {current.main.temp_max}°C
+                    {toCelcius(current.main.temp_max)}°C
                   </Typography>
                 </Box>
                 <br />
