@@ -54,7 +54,7 @@ export default function App({ Component, pageProps }: AppProps) {
               <IconButton
                 aria-label="switch-theme"
                 onClick={() => setIsLight((prev) => !prev)}
-                sx={{ color: "text.primary" }}
+                sx={{ color: "white" }}
               >
                 {isLight ? (
                   <BrightnessHighRoundedIcon />

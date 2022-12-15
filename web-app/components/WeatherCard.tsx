@@ -7,11 +7,7 @@ import { Box, Grid } from "@mui/material";
 import { LineChart } from "./LineChart";
 import { UsePredictionData } from "hooks/PredictWeather";
 import { toCelcius } from "utils";
-
-type Display = {
-  temp: number;
-  hour: number;
-};
+import { Icon } from "./Icon";
 
 export const WeatherCard = () => {
   const { isLoading, data } = UseForecastData();
@@ -29,7 +25,6 @@ export const WeatherCard = () => {
       const temp = data.list
         .filter((l) => {
           const date = new Date(l.dt_txt);
-          console.log(date.getHours());
           return (
             date.getDate() === tomorrow.getDate() &&
             date.getMonth() === tomorrow.getMonth() &&
@@ -39,7 +34,7 @@ export const WeatherCard = () => {
         .map((i) => {
           const d = new Date(i.dt_txt);
           return {
-            temp: toCelcius(i.main.temp),
+            temp: toCelcius(i.main.temp, false),
             hour: d.getHours(),
           };
         });
@@ -65,16 +60,31 @@ export const WeatherCard = () => {
   return (
     <Box width="100%">
       <Grid container gap={2}>
-        <Grid item xs>
-          <Card>
+        <Grid item xs={12} md>
+          <Card sx={{ height: "100%" }}>
             {current && (
               <CardContent>
-                <Typography variant="h4">
-                  {toCelcius(current.main.temp)}°C
-                </Typography>
-                <Typography variant="h3" textTransform="capitalize">
-                  {current.weather[0].main}
-                </Typography>
+                <Box display="flex" gap={4} flexDirection="column" alignItems="start">
+                  <Box display="flex" gap={2}>
+                    <Typography variant="h3">
+                      <Icon id={current.weather[0].icon} />
+                    </Typography>
+                    <Typography variant="h3">
+                      {toCelcius(current.main.temp)}°C
+                    </Typography>
+                  </Box>
+                  <Typography
+                    variant="h5"
+                    textTransform="capitalize"
+                    justifySelf="center"
+                    bgcolor="text.primary"
+                    color="background.default"
+                    px={4}
+                    borderRadius={1}
+                  >
+                    {current.weather[0].main}
+                  </Typography>
+                </Box>
                 <br />
                 <Box
                   display="grid"
@@ -158,28 +168,38 @@ export const WeatherCard = () => {
             )}
           </Card>
         </Grid>
-        <Grid item xs={7}>
-          <Card>
+        <Grid item xs={12} md={7}>
+          <Card sx={{ height: "100%" }}>
             {data && (
-              <CardContent>
-                <Typography variant="h4">Predictions</Typography>
-                <Typography variant="subtitle1">
-                  {displayDate.toLocaleDateString("en-us", {
-                    month: "short",
-                    day: "numeric",
-                    year: "2-digit",
-                  })}
-                </Typography>
-                <Typography variant="subtitle1">Temprature {"(C)"}</Typography>
-                <br />
-
-                <LineChart
-                  openWeather={weather}
-                  prediction={
-                    pred ? pred.main_temp.map((i) => toCelcius(i)) : []
-                  }
-                />
-                <Typography variant="body1"></Typography>
+              <CardContent
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "1em",
+                  height: "100%",
+                }}
+              >
+                <Box>
+                  <Typography variant="h4">Predictions</Typography>
+                  <Typography variant="subtitle1">
+                    {displayDate.toLocaleDateString("en-us", {
+                      month: "short",
+                      day: "numeric",
+                      year: "2-digit",
+                    })}
+                  </Typography>
+                  <Typography variant="subtitle1">
+                    Temprature {"(C)"}
+                  </Typography>
+                </Box>
+                <Box flexGrow={1}>
+                  <LineChart
+                    openWeather={weather}
+                    prediction={
+                      pred ? pred.main_temp.map((i) => toCelcius(i, false)) : []
+                    }
+                  />
+                </Box>
               </CardContent>
             )}
           </Card>

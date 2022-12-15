@@ -1,1 +1,2 @@
-export const toCelcius = (value: number) => Math.round(value - 273.15);
+export const toCelcius = (value: number, round: boolean = true) =>
+  round ? Math.round(value - 273.15) : value - 273.15;

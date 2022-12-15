@@ -1,5 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import React, { useState, useEffect } from "react";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
 
 export const Time = () => {
   var [date, setDate] = useState(new Date());
@@ -14,7 +15,7 @@ export const Time = () => {
 
   return (
     <Box>
-      <Typography variant="h6">
+      <Typography variant="h6" pl={5}>
         {date.toLocaleTimeString("en-us", {
           month: "short",
           day: "numeric",
@@ -22,8 +23,12 @@ export const Time = () => {
           minute: "2-digit",
         })}
       </Typography>
-      <Typography variant="h4">New York, US</Typography>
-      <br />
+      <Box display="flex" gap={1} alignItems="center">
+        <Typography variant="h4">
+          <LocationOnIcon fontSize="inherit" />
+        </Typography>
+        <Typography variant="h4">New York, US</Typography>
+      </Box>
       <br />
     </Box>
   );

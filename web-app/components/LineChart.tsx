@@ -30,6 +30,7 @@ interface Props {
 
 export const options = {
   responsive: true,
+  maintainAspectRatio: false,
   plugins: {
     legend: {
       position: "top" as const,
@@ -95,7 +96,7 @@ export const LineChart = ({ openWeather, prediction }: Props) => {
   };
 
   return (
-    <Box>
+    <Box minHeight="16rem" height="100%">
       <Line options={options} data={data} />
     </Box>
   );
