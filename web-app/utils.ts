@@ -1,1 +1,1 @@
-export const toCelcius = (value: number) => value - 273.15;
+export const toCelcius = (value: number) => Math.round(value - 273.15);
