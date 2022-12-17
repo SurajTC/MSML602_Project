@@ -56,7 +56,6 @@ export const WeatherCard = () => {
       </Card>
     );
   }
-
   return (
     <Box width="100%">
       <Grid container gap={2}>
@@ -64,10 +63,18 @@ export const WeatherCard = () => {
           <Card sx={{ height: "100%" }}>
             {current && (
               <CardContent>
-                <Box display="flex" gap={4} flexDirection="column" alignItems="start">
+                <Box
+                  display="flex"
+                  gap={4}
+                  flexDirection="column"
+                  alignItems="start"
+                >
                   <Box display="flex" gap={2}>
                     <Typography variant="h3">
-                      <Icon id={current.weather[0].icon} />
+                      <Icon
+                        id={current.weather[0].id}
+                        night={current.weather[0].icon.endsWith("n")}
+                      />
                     </Typography>
                     <Typography variant="h3">
                       {toCelcius(current.main.temp)}°C

@@ -5,7 +5,7 @@ export const params = {
 };
 
 export type Description = {
-  id: string;
+  id: number;
   main: string;
   description: string;
   icon: string;
